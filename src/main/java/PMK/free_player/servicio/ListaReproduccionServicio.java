@@ -1,6 +1,5 @@
 package PMK.free_player.servicio;
 
-import PMK.free_player.modelo.ListaReproduccion;
 import PMK.free_player.repositorio.ListaReproduccionRepositorio;
 import PMK.free_player.servicio.interfaces.IListaReproduccion;
 import org.springframework.beans.factory.annotation.Autowired;

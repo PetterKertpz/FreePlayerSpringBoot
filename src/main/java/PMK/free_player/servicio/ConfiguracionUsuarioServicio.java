@@ -1,6 +1,5 @@
 package PMK.free_player.servicio;
 
-import PMK.free_player.modelo.ConfiguracionUsuario;
 import PMK.free_player.repositorio.ConfiguracionUsuarioRepositorio;
 import PMK.free_player.servicio.interfaces.IConfiguracionUsuario;
 import org.springframework.beans.factory.annotation.Autowired;

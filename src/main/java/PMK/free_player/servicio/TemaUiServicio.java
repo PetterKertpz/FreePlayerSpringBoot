@@ -1,7 +1,6 @@
 package PMK.free_player.servicio;
 
 
-import PMK.free_player.modelo.TemaUi;
 import PMK.free_player.repositorio.TemasUiRepositorio;
 import PMK.free_player.servicio.interfaces.ITemaUi;
 import org.springframework.beans.factory.annotation.Autowired;

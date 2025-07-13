@@ -1,32 +1,58 @@
 package PMK.free_player.modelo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.*;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.sql.Time;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
+@Getter
+@Setter
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
-@EqualsAndHashCode
-
+@Table(name = "tbl_canciones", indexes = {
+        @Index(name = "idx_fk_autor_cancion", columnList = "artista"),
+        @Index(name = "idx_fk_genero_cancion", columnList = "genero")
+})
 public class Cancion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_cancion;
-    private String  nombre_cancion;
-    private Time    duracion;
-    private Integer id_autor;
-    private Integer id_genero;
-    private String  url;
-    private String  ruta_portada;
-    private Date    fecha_lanzamiento;
-    private Integer lista_reproduccion;
+    @Column(name = "id_cancion", nullable = false)
+    private Integer id;
+
+    @Size(max = 255)
+    @NotNull
+    @Column(name = "nombre_cancion", nullable = false)
+    private String nombreCancion;
+
+    @NotNull
+    @Column(name = "duracion", nullable = false)
+    private LocalTime duracion;
+
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "artista", nullable = false)
+    private Artista artista;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "genero")
+    private Genero genero;
+
+    @Size(max = 512)
+    @Column(name = "letra", length = 512)
+    private String letra;
+
+    @Size(max = 512)
+    @Column(name = "ruta_portada", length = 512)
+    private String rutaPortada;
+
+    @Column(name = "fecha_lanzamiento")
+    private LocalDate fechaLanzamiento;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "lista_reproduccion")
+    private ListaReproduccion listaReproduccion;
 
 }

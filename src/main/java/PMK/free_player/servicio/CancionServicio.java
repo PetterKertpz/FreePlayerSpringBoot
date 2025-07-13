@@ -1,10 +1,7 @@
 package PMK.free_player.servicio;
 
-import PMK.free_player.modelo.Cancion;
 import PMK.free_player.repositorio.CancionRepositorio;
 import PMK.free_player.servicio.interfaces.ICancion;
-import jakarta.persistence.Entity;
-import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;

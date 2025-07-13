@@ -1,7 +1,5 @@
 package PMK.free_player.servicio.interfaces;
 
-import PMK.free_player.modelo.Cancion;
-
 import java.util.List;
 
 public interface ICancion {
