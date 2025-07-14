@@ -2,8 +2,7 @@ package PMK.free_player.modelo;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -12,6 +11,11 @@ import java.time.Instant;
 
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode(of = {"idLista", "idCancion"})
 @Entity
 @Table(name = "`tbl_intermediaria_canciones-listas`")
 public class lIntermediariaCancionLista {

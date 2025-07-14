@@ -3,14 +3,18 @@ package PMK.free_player.modelo;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode(of = "id")
 @Entity
 @Table(name = "tbl_canciones", indexes = {
         @Index(name = "idx_fk_autor_cancion", columnList = "artista"),
@@ -23,15 +27,15 @@ public class Cancion {
     private Integer id;
 
     @Size(max = 255)
-    @NotNull
+    @NotNull(message = "El nombre de la canción no puede ser nulo")
     @Column(name = "nombre_cancion", nullable = false)
     private String nombreCancion;
 
-    @NotNull
+    @NotNull(message = "La duración de la canción no puede ser nula")
     @Column(name = "duracion", nullable = false)
     private LocalTime duracion;
 
-    @NotNull
+    @NotNull(message = "El ID del artista no puede ser nulo")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "artista", nullable = false)
     private Artista artista;
