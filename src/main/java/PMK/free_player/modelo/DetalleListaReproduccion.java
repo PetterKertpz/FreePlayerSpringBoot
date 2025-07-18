@@ -1,8 +1,8 @@
 package PMK.free_player.modelo;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -11,16 +11,13 @@ import java.time.Instant;
 
 @Getter
 @Setter
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-@EqualsAndHashCode(of = {"idLista", "idCancion"})
 @Entity
-@Table(name = "`tbl_intermediaria_canciones-listas`")
-public class lIntermediariaCancionLista {
+@Table(name = "detalle_lista_reproduccion", schema = "free_player_mejorado", indexes = {
+        @Index(name = "id_cancion", columnList = "id_cancion")
+})
+public class DetalleListaReproduccion {
     @EmbeddedId
-    private lIntermediariaCancionListaId id;
+    private DetalleListaReproduccionId id;
 
     @MapsId("idLista")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -34,13 +31,15 @@ public class lIntermediariaCancionLista {
     @JoinColumn(name = "id_cancion", nullable = false)
     private Cancion idCancion;
 
-    @NotNull
-    @Column(name = "orden", nullable = false)
+    @Column(name = "orden")
     private Integer orden;
 
-    @NotNull
     @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "fecha_agregado", nullable = false)
+    @Column(name = "fecha_agregado")
     private Instant fechaAgregado;
+
+    @Lob
+    @Column(name = "nota_usuario")
+    private String notaUsuario;
 
 }

@@ -1,65 +1,52 @@
 package PMK.free_player.modelo;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import jdk.jfr.Timestamp;
-import lombok.*;
-import org.hibernate.annotations.UpdateTimestamp;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 
 import java.time.Instant;
 
-@Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 @Getter
 @Setter
-@ToString(exclude = "contrasena")
-@EqualsAndHashCode(of = "id")
-@Table(name = "tbl_usuarios", uniqueConstraints = {
-        @UniqueConstraint(name = "uk_nombre_usuario", columnNames = {"nombre_usuario"}),
-        @UniqueConstraint(name = "uk_email", columnNames = {"email"})
+@Entity
+@Table(name = "usuario", schema = "free_player_mejorado", uniqueConstraints = {
+        @UniqueConstraint(name = "nombre_usuario", columnNames = {"nombre_usuario"}),
+        @UniqueConstraint(name = "correo", columnNames = {"correo"})
 })
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_usuario", nullable = false, unique = true)
-    @NotNull(message = "El ID del usuario no puede ser nulo")
+    @Column(name = "id_usuario", nullable = false)
     private Integer id;
 
-
-    @Size(max = 150, message = "El nombre de usuario no puede exceder los 150 caracteres")
-    @NotBlank(message = "El nombre de usuario no puede estar en blanco")
-    @Column(name = "nombre_usuario", nullable = false, length = 150)
+    @Size(max = 50)
+    @NotNull
+    @Column(name = "nombre_usuario", nullable = false, length = 50)
     private String nombreUsuario;
 
-
-    @Size(max = 150 , message = "El email no puede exceder los 150 caracteres")
-    @Email
-    @NotBlank(message = "El email no puede estar en blanco")
-    @Column(name = "email", nullable = false, length = 150)
-    private String email;
-
-    @Size(min = 8,max = 255, message = "La contraseña debe tener entre 8 y 255 caracteres")
-    @NotBlank(message = "La contraseña no puede estar en blanco")
-    @Column(name = "contrasena", nullable = false)
-    private String contrasena;
-
-    @Size(max = 2)
-    @NotBlank(message = "El código de país no puede estar en blanco")
-    @Column(name = "pais_iso", length = 2)
-    private String paisIso;
-
+    @Size(max = 255)
     @NotNull
-    @Timestamp
-    @Column(name = "fecha_registro", nullable = false, updatable = false)
+    @Column(name = "correo", nullable = false)
+    private String correo;
+
+    @Size(max = 255)
+    @NotNull
+    @Column(name = "contrasena_hash", nullable = false)
+    private String contrasenaHash;
+
+    @ColumnDefault("CURRENT_TIMESTAMP")
+    @Column(name = "fecha_registro")
     private Instant fechaRegistro;
 
-    @Column(name = "fecha_actualizacion")
-    @UpdateTimestamp
-    private Instant fechaActualizacion;
+    @Lob
+    @Column(name = "foto_perfil")
+    private String fotoPerfil;
+
+    @ColumnDefault("0")
+    @Column(name = "verificado")
+    private Boolean verificado;
 
 }

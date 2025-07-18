@@ -3,28 +3,23 @@ package PMK.free_player.modelo;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-@EqualsAndHashCode(of = "id")
 @Entity
-@Table(name = "tbl_generos", uniqueConstraints = {
-        @UniqueConstraint(name = "nombre_genero", columnNames = {"nombre_genero"})
+@Table(name = "genero", schema = "free_player_mejorado", uniqueConstraints = {
+        @UniqueConstraint(name = "nombre", columnNames = {"nombre"})
 })
 public class Genero {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_genero", nullable = false)
     private Integer id;
 
-    @Size(max = 50, message = "El nombre del género no puede exceder los 50 caracteres")
-    @NotNull(message = "El nombre del género no puede ser nulo")
-    @Column(name = "nombre_genero", nullable = false, length = 50)
-    private String nombreGenero;
+    @Size(max = 50)
+    @NotNull
+    @Column(name = "nombre", nullable = false, length = 50)
+    private String nombre;
 
 }

@@ -1,0 +1,60 @@
+package PMK.free_player.modelo;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+@Getter
+@Setter
+@Entity
+@Table(name = "configuracion_usuario", schema = "free_player_mejorado", indexes = {
+        @Index(name = "id_tema", columnList = "id_tema"),
+        @Index(name = "id_cancion_ultima", columnList = "id_cancion_ultima"),
+        @Index(name = "id_cancion_favorita", columnList = "id_cancion_favorita")
+}, uniqueConstraints = {
+        @UniqueConstraint(name = "id_usuario", columnNames = {"id_usuario"})
+})
+public class ConfiguracionUsuario {
+    @Id
+    @Column(name = "id_configuracion", nullable = false)
+    private Integer id;
+
+    @NotNull
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "id_usuario", nullable = false)
+    private Usuario idUsuario;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_tema")
+    private TemaInterfaz idTema;
+
+    @Size(max = 10)
+    @ColumnDefault("'es'")
+    @Column(name = "idioma", length = 10)
+    private String idioma;
+
+    @ColumnDefault("'auto'")
+    @Lob
+    @Column(name = "modo_interfaz")
+    private String modoInterfaz;
+
+    @ColumnDefault("'normal'")
+    @Lob
+    @Column(name = "orden_reproduccion")
+    private String ordenReproduccion;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_cancion_ultima")
+    private Cancion idCancionUltima;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_cancion_favorita")
+    private Cancion idCancionFavorita;
+
+}
