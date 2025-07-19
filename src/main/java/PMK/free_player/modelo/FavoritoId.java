@@ -3,21 +3,26 @@ package PMK.free_player.modelo;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.Hibernate;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @Getter
 @Setter
 @Embeddable
 public class FavoritoId implements Serializable {
+    @Serial
     private static final long    serialVersionUID = 1990374939711076435L;
     @NotNull
     @Column(name = "id_usuario", nullable = false)
-    private              Integer idUsuario;
+    private Integer idUsuario;
 
     @NotNull
     @Column(name = "id_cancion", nullable = false)
@@ -25,12 +30,13 @@ public class FavoritoId implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        FavoritoId entity = (FavoritoId) o;
-        return Objects.equals(this.idCancion, entity.idCancion) &&
-                Objects.equals(this.idUsuario, entity.idUsuario);
-    }
+    if (this == o) return true;
+    if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+    FavoritoId entity = (FavoritoId) o;
+    return Objects.equals(this.idCancion, entity.idCancion) &&
+           Objects.equals(this.idUsuario, entity.idUsuario);
+}
+
 
     @Override
     public int hashCode() {

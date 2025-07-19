@@ -3,12 +3,16 @@ package PMK.free_player.modelo;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.Instant;
 
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString(exclude = "contrasenaHash")
+@EqualsAndHashCode(of = "id")
 @Getter
 @Setter
 @Entity
@@ -16,6 +20,7 @@ import java.time.Instant;
         @UniqueConstraint(name = "nombre_usuario", columnNames = {"nombre_usuario"}),
         @UniqueConstraint(name = "correo", columnNames = {"correo"})
 })
+
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
