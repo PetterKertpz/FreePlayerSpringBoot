@@ -1,6 +1,7 @@
-package PMK.free_player.modelo;
+package PMK.free_player.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
@@ -23,6 +24,7 @@ import java.time.Instant;
 })
 public class HistorialReproduccion {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_historial", nullable = false)
     private Integer id;
 
@@ -41,6 +43,7 @@ public class HistorialReproduccion {
     @Column(name = "fecha_reproduccion")
     private Instant fechaReproduccion;
 
+    @Min(0)
     @Column(name = "duracion_reproduccion_segundos")
     private Integer duracionReproduccionSegundos;
 

@@ -1,6 +1,7 @@
-package PMK.free_player.modelo;
+package PMK.free_player.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -33,6 +34,7 @@ public class Usuario {
     private String nombreUsuario;
 
     @Size(max = 255)
+    @Email(message = "El correo electrónico debe ser válido")
     @NotNull
     @Column(name = "correo", nullable = false)
     private String correo;

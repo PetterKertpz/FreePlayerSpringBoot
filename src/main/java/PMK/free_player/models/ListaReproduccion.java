@@ -1,4 +1,4 @@
-package PMK.free_player.modelo;
+package PMK.free_player.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -23,6 +23,7 @@ import java.time.Instant;
 })
 public class ListaReproduccion {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_lista", nullable = false)
     private Integer id;
 

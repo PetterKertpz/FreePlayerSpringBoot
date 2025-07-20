@@ -1,4 +1,4 @@
-package PMK.free_player.modelo;
+package PMK.free_player.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
@@ -17,12 +17,12 @@ import java.util.Objects;
 @Getter
 @Setter
 @Embeddable
-public class DetalleListaReproduccionId implements Serializable {
+public class DetalleListaReproduccionPk implements Serializable {
     @Serial
-    private static final long    serialVersionUID = -8648288561081378065L;
+    private static final long serialVersionUID = -8648288561081378065L;
     @NotNull
     @Column(name = "id_lista", nullable = false)
-    private              Integer idLista;
+    private Integer idLista;
 
     @NotNull
     @Column(name = "id_cancion", nullable = false)
@@ -32,7 +32,7 @@ public class DetalleListaReproduccionId implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        DetalleListaReproduccionId entity = (DetalleListaReproduccionId) o;
+        DetalleListaReproduccionPk entity = (DetalleListaReproduccionPk) o;
         return Objects.equals(this.idCancion, entity.idCancion) &&
                 Objects.equals(this.idLista, entity.idLista);
     }

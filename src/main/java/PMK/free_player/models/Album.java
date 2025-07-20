@@ -1,9 +1,14 @@
-package PMK.free_player.modelo;
+package PMK.free_player.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Builder
 @NoArgsConstructor
@@ -18,6 +23,7 @@ import lombok.*;
 })
 public class Album {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_album", nullable = false)
     private Integer id;
 
@@ -39,6 +45,9 @@ public class Album {
 
     @Column(name = "duracion_total_segundos")
     private Integer duracionTotalSegundos;
+
+    @Column(name = "fecha_creacion")
+    private LocalDate fechaCreacion;
 
     @Lob
     @Column(name = "portada_url")

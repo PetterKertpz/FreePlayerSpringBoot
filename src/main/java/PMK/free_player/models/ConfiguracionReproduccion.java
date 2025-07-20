@@ -1,4 +1,4 @@
-package PMK.free_player.modelo;
+package PMK.free_player.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -19,11 +19,13 @@ import java.util.Map;
 @Setter
 @Entity
 @Table(name = "configuracion_reproduccion", schema = "free_player_mejorado", uniqueConstraints = {
+        @UniqueConstraint(name = "id_configuracion_reproduccion", columnNames = {"id_configuracion_reproduccion"}),
         @UniqueConstraint(name = "id_usuario", columnNames = {"id_usuario"})
 })
 public class ConfiguracionReproduccion {
     @Id
-    @Column(name = "id_configuracion_audio", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_configuracion_reproduccion", nullable = false)
     private Integer id;
 
     @NotNull

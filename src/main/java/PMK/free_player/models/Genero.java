@@ -1,4 +1,4 @@
-package PMK.free_player.modelo;
+package PMK.free_player.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -18,6 +18,7 @@ import lombok.*;
 })
 public class Genero {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_genero", nullable = false)
     private Integer id;
 

@@ -1,6 +1,7 @@
-package PMK.free_player.modelo;
+package PMK.free_player.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -24,6 +25,7 @@ import java.time.LocalDate;
 })
 public class Cancion {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_cancion", nullable = false)
     private Integer id;
 
@@ -41,6 +43,7 @@ public class Cancion {
     private String titulo;
 
     @NotNull
+    @Min(0)
     @Column(name = "duracion_segundos", nullable = false)
     private Integer duracionSegundos;
 
@@ -71,8 +74,8 @@ public class Cancion {
     @Column(name = "formato_audio", length = 10)
     private String formatoAudio;
 
-    @Column(name = "`tamaño_mb`", precision = 6, scale = 2)
-    private BigDecimal tamañoMb;
+    @Column(name = "`tamanio_mb`", precision = 6, scale = 2)
+    private BigDecimal tamanioMb;
 
     @ColumnDefault("CURRENT_TIMESTAMP")
     @Column(name = "ultima_reproduccion")
