@@ -3,7 +3,7 @@ package PMK.free_player.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.ColumnDefault; // Keep this import if you have other fields with default
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -34,10 +34,10 @@ public class ConfiguracionReproduccion {
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario idUsuario;
 
-    @ColumnDefault("'estándar'")
-    @Lob
+    // REMOVE @ColumnDefault here
+    @ColumnDefault("estándar")
     @Column(name = "calidad_audio")
-    private String calidadAudio;
+    private String calidadAudio = "estándar"; // You can set a default in the constructor or here.
 
     @Column(name = "ecualizador")
     @JdbcTypeCode(SqlTypes.JSON)
