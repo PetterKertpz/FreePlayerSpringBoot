@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -17,6 +18,18 @@ public class ConfiguracionReproduccionServicio implements IConfiguracionReproduc
 
     private static final Logger log = LoggerFactory.getLogger(ConfiguracionReproduccionServicio.class);
     private final ConfiguracionReproduccionRepositorio configuracionReproduccionRepositorio;
+
+    @Override
+    public List<ConfiguracionReproduccion> listarListasReproduccion() {
+        log.info("Listando todas las configuraciones de reproducción");
+        List<ConfiguracionReproduccion> configuraciones = configuracionReproduccionRepositorio.findAll();
+        if (configuraciones.isEmpty()) {
+            log.warn("No se encontraron configuraciones de reproducción");
+            throw new NoDataFoundException("No se encontraron configuraciones de reproducción");
+        }
+        log.info("Se encontraron {} configuraciones de reproducción", configuraciones.size());
+        return configuraciones;
+    }
 
     @Override
     public Optional<ConfiguracionReproduccion> findConfiguracionReproduccionById(Integer idConfiguracionReproduccion) {

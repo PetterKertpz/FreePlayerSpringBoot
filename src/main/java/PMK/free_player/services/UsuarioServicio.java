@@ -27,7 +27,10 @@ public class UsuarioServicio implements IUsuario {
         if (listaUsuarios.isEmpty()) {
             log.warn("No se encontraron usuarios registrados en la base de datos");
             throw new NoDataFoundException("No existen usuarios registrados actualmente.");
+        }else {
+            log.info("Usuarios encontrados: {}", listaUsuarios.size());
         }
+        log.debug("Usuarios encontrados: {}", listaUsuarios);
         return listaUsuarios;
     }
 
@@ -40,7 +43,9 @@ public class UsuarioServicio implements IUsuario {
             log.warn("Usuario no encontrado con ID: {}", idUsuario);
             throw new UsuarioNoEncontradoException("Usuario no encontrado con ID: " + idUsuario);
         }
+        log.info("Usuario encontrado: {}", usuario.get());
         return usuario;
+
     }
 
     // Guardar o actualizar un usuario
