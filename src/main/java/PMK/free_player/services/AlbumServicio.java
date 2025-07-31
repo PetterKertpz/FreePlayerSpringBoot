@@ -32,6 +32,7 @@ public class AlbumServicio implements IAlbum {
     @Override
     public List<Album> listarAlbumesPorArtista(Integer idArtista) {
         log.info("Iniciando lista de albumes por artista");
+        List<Album> albumes = albumRepositorio.findAllByIdArtista(idArtista);
         if (albumes.isEmpty()) {
             log.error("Album no encontrado para el artista con ID: {}", idArtista);
             throw new RuntimeException("No se encontraron albumes para el artista con ID: " + idArtista);
@@ -56,6 +57,7 @@ public class AlbumServicio implements IAlbum {
     @Override
     public Optional<Album> findAlbumPorArtista(Integer idArtista) {
         log.info("Iniciando el album con ID {}", idArtista);
+        Optional<Album> albumes = albumRepositorio.findByIdArtista(idArtista);
         if (albumes.isEmpty()) {
             log.error("Album no encontrado para el artista con ID: {}", idArtista);
             throw new RuntimeException("No se encontró el album para el artista con ID: " + idArtista);
