@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
-import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.ColumnDefault; // Mantén la importación si otras columnas aún usan @ColumnDefault
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -49,16 +49,16 @@ public class ConfiguracionUsuario {
     @Column(name = "idioma", length = 10)
     private String idioma;
 
-    @ColumnDefault("'auto'")
-    @Lob
+    // ELIMINADO: @ColumnDefault("'auto'")
+    @Lob // Se mantiene si realmente necesita ser un TEXT/LONGTEXT
     @Pattern(regexp = "^(auto|claro|oscuro)$", message = "Modo de interfaz no válido")
     @Column(name = "modo_interfaz")
-    private String modoInterfaz;
+    private String modoInterfaz = "auto"; // Se asigna el valor predeterminado en Java
 
-    @ColumnDefault("'normal'")
-    @Lob
+    // ELIMINADO: @ColumnDefault("'normal'")
+    @Lob // Se mantiene si realmente necesita ser un TEXT/LONGTEXT
     @Column(name = "orden_reproduccion")
-    private String ordenReproduccion;
+    private String ordenReproduccion = "normal"; // Se asigna el valor predeterminado en Java
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_cancion_ultima")
