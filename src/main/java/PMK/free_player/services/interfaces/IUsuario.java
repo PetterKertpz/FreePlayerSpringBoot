@@ -6,12 +6,12 @@ import java.util.Optional;
 
 public interface IUsuario{
 
-    List<Usuario> ListarUsuarios();
+    public List<Usuario> ListarUsuarios();
 
-    Optional <Usuario> findUsuarioById(Integer idUsuario);
+    public Optional <Usuario> findUsuarioById(Integer idUsuario);
 
-    Usuario saveUsuario(Usuario usuario);
+    public Usuario saveUsuario(Usuario usuario);
 
-    void deleteUsuarioById(Integer idUsuario);
+    public void deleteUsuarioById(Integer idUsuario);
 
 }

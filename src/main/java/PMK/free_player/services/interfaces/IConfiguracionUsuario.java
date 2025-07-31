@@ -7,13 +7,13 @@ import java.util.Optional;
 
 public interface IConfiguracionUsuario{
 
-    List<ConfiguracionUsuario> listarConfiguracionesUsuario();
+    public List<ConfiguracionUsuario> listarConfiguracionesUsuario();
 
-    Optional<ConfiguracionUsuario> findConfiguracionUsuarioById(Integer idConfiguracionUsuario);
+    public Optional<ConfiguracionUsuario> findConfiguracionUsuarioById(Integer idConfiguracionUsuario);
 
-    Optional<ConfiguracionUsuario> findConfiguracionUsuarioByUsuario(Integer idUsuario);
+    public Optional<ConfiguracionUsuario> findConfiguracionUsuarioByUsuario(Integer idUsuario);
 
-    ConfiguracionUsuario saveConfiguracionUsuario(ConfiguracionUsuario configuracionUsuario);
+    public ConfiguracionUsuario saveConfiguracionUsuario(ConfiguracionUsuario configuracionUsuario);
 
-    void eliminarConfiguracionUsuarioById(Integer idConfiguracionUsuario);
+    public void eliminarConfiguracionUsuarioById(Integer idConfiguracionUsuario);
 }
