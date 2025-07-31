@@ -164,6 +164,7 @@
              </configuration>
           </plugin>
 
+<<<<<<< HEAD
           <plugin>
              <groupId>org.springframework.boot</groupId>
              <artifactId>spring-boot-maven-plugin</artifactId>
@@ -183,6 +184,21 @@
                  </execution>
              </executions>
           </plugin>
+=======
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-controls</artifactId>
+			<version>21</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-fxml</artifactId>
+			<version>21</version>
+		</dependency>
+
+	</dependencies>
+>>>>>>> parent of c115c7e (Revert "Sistema completado V1")
 
           <plugin>
              <groupId>org.openjfx</groupId>
