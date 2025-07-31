@@ -2,15 +2,19 @@ package PMK.free_player.services.interfaces;
 
 import PMK.free_player.models.ConfiguracionReproduccion;
 
+
+import java.util.List;
 import java.util.Optional;
 
 public interface IConfiguracionReproduccion {
 
-    public Optional<ConfiguracionReproduccion> findConfiguracionReproduccionById(Integer idConfiguracionReproduccion);
+    List<ConfiguracionReproduccion> listarListasReproduccion();
 
-    public Optional<ConfiguracionReproduccion> findConfiguracionReproduccionByUsuario(Integer idUsuario);
+    Optional<ConfiguracionReproduccion> findConfiguracionReproduccionById(Integer idConfiguracionReproduccion);
 
-    public ConfiguracionReproduccion saveConfiguracionReproduccion(ConfiguracionReproduccion configuracionReproduccion);
+    Optional<ConfiguracionReproduccion> findConfiguracionReproduccionByUsuario(Integer idUsuario);
 
-    public void deleteConfiguracionReproduccionById(Integer idConfiguracionReproduccion);
+    ConfiguracionReproduccion saveConfiguracionReproduccion(ConfiguracionReproduccion configuracionReproduccion);
+
+    void deleteConfiguracionReproduccionById(Integer idConfiguracionReproduccion);
 }
