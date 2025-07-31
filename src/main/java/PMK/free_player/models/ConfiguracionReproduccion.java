@@ -35,9 +35,8 @@ public class ConfiguracionReproduccion {
     private Usuario idUsuario;
 
     // REMOVE @ColumnDefault here
-    @ColumnDefault("estándar")
     @Column(name = "calidad_audio")
-    private String calidadAudio = "estándar"; // You can set a default in the constructor or here.
+    private String calidadAudio = "estándar";
 
     @Column(name = "ecualizador")
     @JdbcTypeCode(SqlTypes.JSON)
