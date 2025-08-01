@@ -34,8 +34,6 @@ public class ConfiguracionReproduccion {
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario idUsuario;
 
-    // REMOVE @ColumnDefault here
-    @ColumnDefault("estándar")
     @Column(name = "calidad_audio")
     private String calidadAudio = "estándar"; // You can set a default in the constructor or here.
 

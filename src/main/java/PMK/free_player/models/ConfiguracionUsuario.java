@@ -49,16 +49,12 @@ public class ConfiguracionUsuario {
     @Column(name = "idioma", length = 10)
     private String idioma;
 
-    // ELIMINADO: @ColumnDefault("'auto'")
-    @Lob // Se mantiene si realmente necesita ser un TEXT/LONGTEXT
     @Pattern(regexp = "^(auto|claro|oscuro)$", message = "Modo de interfaz no válido")
-    @Column(name = "modo_interfaz")
-    private String modoInterfaz = "auto"; // Se asigna el valor predeterminado en Java
+    @Column(name = "modo_interfaz", length = 20) // Un length razonable
+    private String modoInterfaz = "auto";
 
-    // ELIMINADO: @ColumnDefault("'normal'")
-    @Lob // Se mantiene si realmente necesita ser un TEXT/LONGTEXT
-    @Column(name = "orden_reproduccion")
-    private String ordenReproduccion = "normal"; // Se asigna el valor predeterminado en Java
+    @Column(name = "orden_reproduccion", length = 20) // Un length razonable
+    private String ordenReproduccion = "normal";
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_cancion_ultima")

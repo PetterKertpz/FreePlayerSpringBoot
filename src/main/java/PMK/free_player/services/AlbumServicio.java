@@ -31,8 +31,9 @@ public class AlbumServicio implements IAlbum {
 
     @Override
     public List<Album> listarAlbumesPorArtista(Integer idArtista) {
-        log.info("Iniciando lista de albumes por artista");
-        List<Album> albumes = albumRepositorio.findAllByIdArtista(idArtista);
+        log.info("Iniciando lista de albumes por artista con ID: {}", idArtista);
+        // ¡Usa el metodo corregido del repositorio!
+        List<Album> albumes = albumRepositorio.findByidArtista(idArtista);
         if (albumes.isEmpty()) {
             log.error("Album no encontrado para el artista con ID: {}", idArtista);
             throw new RuntimeException("No se encontraron albumes para el artista con ID: " + idArtista);
@@ -54,18 +55,18 @@ public class AlbumServicio implements IAlbum {
         }
     }
 
-    @Override
-    public Optional<Album> findAlbumPorArtista(Integer idArtista) {
-        log.info("Iniciando el album con ID {}", idArtista);
-        Optional<Album> albumes = albumRepositorio.findByIdArtista(idArtista);
-        if (albumes.isEmpty()) {
-            log.error("Album no encontrado para el artista con ID: {}", idArtista);
-            throw new RuntimeException("No se encontró el album para el artista con ID: " + idArtista);
+     public Optional<Album> findAlbumPorArtista(Integer idArtista) {
+        log.info("Buscando un álbum (opcional) para el artista con ID: {}", idArtista);
+        // Esto buscará una lista y tomará el primero si existe. Es una solución temporal
+        // si realmente necesitas un Optional. Lo ideal es redefinir el propósito de este método.
+        List<Album> albums = albumRepositorio.findByidArtista(idArtista);
+        if (albums.isEmpty()) {
+            log.warn("No se encontró ningún álbum para el artista con ID: {}", idArtista);
+            return Optional.empty();
         } else {
-            log.info("Album encontrado para el artista con ID {}: {}", idArtista, albumes.get());
-            return albumes;
+            log.info("Se encontró al menos un álbum para el artista con ID {}. Devolviendo el primero.", idArtista);
+            return Optional.of(albums.getFirst()); // Devuelve el primero de la lista
         }
-
     }
 
     @Override

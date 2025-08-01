@@ -1,5 +1,6 @@
 package PMK.free_player.services;
 
+import PMK.free_player.exceptions.RecursoNoEncontradoException;
 import PMK.free_player.exceptions.UsuarioNoEncontradoException;
 import PMK.free_player.models.ListaReproduccion;
 import PMK.free_player.repositorys.ListaReproduccionRepositorio;
@@ -37,20 +38,22 @@ public class ListaReproduccionServicio implements IListaReproduccion {
         Optional<ListaReproduccion> listaReproduccion = listaReproduccionRepositorio.findById(idLista);
         if (listaReproduccion.isEmpty()) {
             log.warn("Lista de reproduccion no encontrada con ID: {}", idLista);
-            throw new UsuarioNoEncontradoException("Lista de reproduccion no encontrada con ID: " + idLista);
+            // Usar una excepción más apropiada
+            throw new RecursoNoEncontradoException("Lista de reproduccion no encontrada con ID: " + idLista);
         }
         log.info("Lista de reproduccion encontrada: {}", listaReproduccion.get());
         return listaReproduccion;
-
     }
 
     @Override
     public Optional<ListaReproduccion> FindListaReproduccionByUsuario(Integer idUsuario) {
         log.debug("Buscando Lista de Reproduccion por Usuario ID: {}", idUsuario);
-        Optional<ListaReproduccion> listaReproduccion = listaReproduccionRepositorio.findById(idUsuario);
+        // Usa el metodo correcto del repositorio para buscar por el ID del usuario
+        Optional<ListaReproduccion> listaReproduccion = listaReproduccionRepositorio.findByidUsuario_Id(idUsuario);
         if (listaReproduccion.isEmpty()) {
             log.warn("Lista de reproduccion no encontrada para el usuario con ID: {}", idUsuario);
-            throw new UsuarioNoEncontradoException("Lista de reproduccion no encontrada para el usuario con ID: " + idUsuario);
+            // Usar una excepción más apropiada
+            throw new RecursoNoEncontradoException("Lista de reproduccion no encontrada para el usuario con ID: " + idUsuario);
         }
         log.info("Lista de reproduccion encontrada para el usuario: {}", listaReproduccion.get());
         return listaReproduccion;

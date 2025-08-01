@@ -1,9 +1,9 @@
 package PMK.free_player;
 
-import PMK.free_player.presentacion.FreePlayerFx;
 import javafx.application.Application;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
@@ -13,9 +13,8 @@ public class FreePlayerApplication{
 
 	public static void main(String[] args) {
 		logger.info("Iniciando la aplicación FreePlayer");
-
-		//SpringApplication.run(FreePlayerApplication.class, args);
-		Application.launch(FreePlayerFx.class, args);
+		System.out.println("Iniciando la aplicación FreePlayer");
+		SpringApplication.run(FreePlayerApplication.class, args);
 	}
 
 

@@ -1,5 +1,6 @@
 package PMK.free_player.services;
 
+import PMK.free_player.exceptions.NoDataFoundException;
 import PMK.free_player.models.Favorito;
 import PMK.free_player.repositorys.FavoritoRepositorio;
 import PMK.free_player.services.interfaces.IFavorito;
@@ -36,14 +37,16 @@ public class FavoritoServicio implements IFavorito {
     @Override
     public Optional<Favorito> FindFavoritoByIdCancion(Integer idCancion) {
         log.debug("Buscando favorito por ID de canción: {}", idCancion);
-        Optional<Favorito> favorito = favoritoRepositorio.findById(idCancion);
-        if (favorito.isPresent()) {
-            log.info("Favorito encontrado: {}", favorito.get());
-        } else {
+
+        List<Favorito> favoritos = favoritoRepositorio.findById_IdCancion(idCancion);
+        if (favoritos.isEmpty()) {
             log.warn("No se encontró favorito con ID de canción: {}", idCancion);
-            throw new RuntimeException("No se encontró el favorito con ID de canción: " + idCancion);
+            // Usar una excepción más específica.
+            throw new NoDataFoundException("No se encontró el favorito con ID de canción: " + idCancion);
+        } else {
+            log.info("Se encontraron {} favoritos para la canción con ID: {}", favoritos.size(), idCancion);
+            return Optional.of(favoritos.getFirst()); // O reconsidera el tipo de retorno y si solo necesitas uno.
         }
-        return favorito;
     }
 
     @Override
@@ -61,12 +64,20 @@ public class FavoritoServicio implements IFavorito {
 
     @Override
     public void deleteFavorito(Integer idCancion) {
-        log.debug("Eliminando favorito: {}", idCancion);
-        if (!favoritoRepositorio.existsById(idCancion)) {
-            log.warn("No se encontró favorito con ID canción: {}", idCancion);
-            throw new RuntimeException("No se encontró el favorito con ID de canción: " + idCancion);
+        log.debug("Eliminando favoritos para el ID de canción: {}", idCancion);
+        // Para eliminar por idCancion cuando la clave es compuesta,
+        // primero necesitamos encontrar todos los favoritos asociados a esa canción
+        // y luego eliminarlos.
+        List<Favorito> favoritosToDelete = favoritoRepositorio.findById_IdCancion(idCancion);
+
+        if (favoritosToDelete.isEmpty()) {
+            log.warn("No se encontraron favoritos para la canción con ID: {}", idCancion);
+            throw new NoDataFoundException("No se encontraron favoritos para la canción con ID: " + idCancion);
         }
-        favoritoRepositorio.deleteById(idCancion);
-        log.info("Favorito eliminado exitosamente con ID de canción: {}", idCancion);
+
+        // Eliminar cada favorito encontrado
+        favoritoRepositorio.deleteAll(favoritosToDelete); // Elimina una colección
+        log.info("Se eliminaron {} favoritos para la canción con ID: {}", favoritosToDelete.size(), idCancion);
     }
 }
+
