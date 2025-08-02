@@ -154,7 +154,7 @@
 				<artifactId>javafx-maven-plugin</artifactId>
 				<version>0.0.8</version>
 				<configuration>
-        			<mainClass>PMK.free_player.application.FreePlayerApplication</mainClass>
+        			<mainClass>PMK.free_player.application.Reproductor</mainClass>
     			</configuration>
 			</plugin>
 

@@ -3,11 +3,11 @@ package PMK.free_player;
 import javafx.application.Application;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
-@SpringBootConfiguration
+@SpringBootApplication
 public class SpringApplication {
     private static final Logger log = LoggerFactory.getLogger(SpringApplication.class);
     public static ConfigurableApplicationContext applicationContext;

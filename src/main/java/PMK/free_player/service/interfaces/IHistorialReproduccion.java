@@ -11,7 +11,7 @@ public interface IHistorialReproduccion {
 
     Optional<HistorialReproduccion> findHistorialReproduccionById(Integer idHistorial);
 
-    Optional<HistorialReproduccion> findHistorialReproduccionByCancion(Integer idCancion);
+    List<HistorialReproduccion> findHistorialReproduccionByCancion(Integer idCancion);
 
     HistorialReproduccion save(HistorialReproduccion historialReproduccion);
 

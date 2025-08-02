@@ -33,13 +33,23 @@ public class CancionServicio implements ICancion {
     @Override
     public List<Cancion> listarCancionesPorAlbum(Integer idAlbum) {
         log.info("Buscando canciones por ID de album: {}", idAlbum);
-        return listarCancionesPorId(idAlbum, "album", cancionRepositorio::findAllById);
+        List<Cancion> canciones = cancionRepositorio.findByIdAlbum_Id(idAlbum); // ¡Corregido!
+        if (canciones.isEmpty()) {
+            log.warn("No se encontraron canciones para el álbum con ID: {}", idAlbum);
+            throw new NoDataFoundException("No se encontraron canciones para el álbum con ID: " + idAlbum);
+        }
+        return canciones;
     }
 
     @Override
     public List<Cancion> listarCancionesPorGenero(Integer idGenero) {
         log.info("Buscando canciones por ID de género: {}", idGenero);
-        return listarCancionesPorId(idGenero, "género", cancionRepositorio::findAllById);
+        List<Cancion> canciones = cancionRepositorio.findByIdGenero_Id(idGenero); // ¡Corregido!
+        if (canciones.isEmpty()) {
+            log.warn("No se encontraron canciones para el género con ID: {}", idGenero);
+            throw new NoDataFoundException("No se encontraron canciones para el género con ID: " + idGenero);
+        }
+        return canciones;
     }
 
     @Override

@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.springframework.context.ConfigurableApplicationContext;
 
 import java.io.IOException;
 import java.util.logging.Level;
@@ -28,9 +27,6 @@ public class Reproductor extends Application {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/templates/index.fxml"));
 
-            // ¡CRUCIAL para la integración Spring-JavaFX!
-            // Le dice al FXMLLoader que use el contexto de Spring (que está en FreePlayerApplication.applicationContext)
-            // para crear instancias de controladores. Así, Spring puede inyectar automáticamente dependencias.
             if (SpringApplication.applicationContext == null) {
                 Logger.getLogger(Reproductor.class.getName()).log(Level.SEVERE, "El contexto de Spring no fue inicializado " +
                         "correctamente.");

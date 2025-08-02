@@ -26,7 +26,7 @@ public class Album {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_artista")
-    private Artista Artista;
+    private Artista idArtista;
 
     @Size(max = 100)
     @NotNull

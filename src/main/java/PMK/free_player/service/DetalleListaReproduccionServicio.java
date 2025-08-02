@@ -20,7 +20,7 @@ public class DetalleListaReproduccionServicio implements IDetalleListaReproducci
     private final DetalleListaReproduccionRepositorio detalleListaReproduccionRepositorio;
 
     @Override
-    public Optional<DetalleListaReproduccion> findDetalleListaReproduccionByIdLista(Integer idLista) {
+    public List<DetalleListaReproduccion> findDetalleListaReproduccionByIdLista(Integer idLista) {
         // Ahora busca una lista por el ID de la lista.
         // Si la interfaz ITDetalleListaReproduccion espera un Optional<DetalleListaReproduccion>
         // y no una lista, esto es un mismatch. Deberías ajustar la interfaz o la lógica aquí
@@ -29,15 +29,14 @@ public class DetalleListaReproduccionServicio implements IDetalleListaReproducci
         List<DetalleListaReproduccion> detalles = detalleListaReproduccionRepositorio.findById_IdLista(idLista);
         if (detalles.isEmpty()) {
             log.warn("No se encontraron detalles de lista de reproducción para el ID de lista: {}", idLista);
-            return Optional.empty(); // O lanzar NoDataFoundException si prefieres.
         }
         log.info("Se encontraron {} detalles de lista de reproducción para el ID de lista: {}", detalles.size(), idLista);
-        return Optional.of(detalles.getFirst()); // Devuelve el primero si solo esperas uno.
+        return  detalles;
     }
 
     @Override
     public void saveCancionALista(DetalleListaReproduccion detalleListaReproduccion) {
-        // Este método parece correcto ya que recibe el objeto completo.
+        // Este metodo parece correcto ya que recibe el objeto completo.
         log.debug("Guardando canción en lista de reproducción: {}", detalleListaReproduccion);
         detalleListaReproduccionRepositorio.save(detalleListaReproduccion);
         log.info("Canción guardada en lista con ID de lista: {} y ID de canción: {}",

@@ -45,18 +45,18 @@ public class HistorialReproduccionServicio implements IHistorialReproduccion {
     }
 
     @Override
-    public Optional<HistorialReproduccion> findHistorialReproduccionByCancion(Integer idCancion) {
+    public List<HistorialReproduccion> findHistorialReproduccionByCancion(Integer idCancion) {
         log.debug("Iniciando búsqueda de historialReproduccion por canción con id: {}", idCancion);
-        // Usar el método correcto. Si esperas solo uno, puedes tomar el primero de la lista.
+        // Usar el metodo correcto. Si esperas solo uno, puedes tomar el primero de la lista.
         // Si esperas varios, cambia el tipo de retorno del servicio a List<HistorialReproduccion>.
         List<HistorialReproduccion> historialReproduccionList = historialReproduccionRepositorio.findByidCancion_Id(idCancion);
         if (historialReproduccionList.isEmpty()) {
             log.debug("No se encontró el historial de reproduccion para la cancion con id: {}", idCancion);
-            return Optional.empty();
         } else {
             log.debug("HistorialReproduccion encontrado: {}", historialReproduccionList.getFirst()); // Podrías devolver el primero o manejar la lista.
-            return Optional.of(historialReproduccionList.getFirst()); // Devuelve el primero
+
         }
+        return historialReproduccionList;
     }
 
     @Override

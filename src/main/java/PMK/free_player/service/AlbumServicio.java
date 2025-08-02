@@ -1,5 +1,6 @@
 package PMK.free_player.service;
 
+import PMK.free_player.exceptions.NoDataFoundException;
 import PMK.free_player.models.Album;
 import PMK.free_player.repository.AlbumRepositorio;
 import PMK.free_player.service.interfaces.IAlbum;
@@ -31,14 +32,13 @@ public class AlbumServicio implements IAlbum {
 
     @Override
     public List<Album> listarAlbumesPorArtista(Integer idArtista) {
-        log.info("Iniciando lista de albumes por artista con ID: {}", idArtista);
-        // ¡Usa el metodo corregido del repositorio!
-        List<Album> albumes = albumRepositorio.findByidArtista(idArtista);
+        log.info("Buscando albumes por ID de artista: {}", idArtista);
+        // Asegúrate de que este metodo devuelva List<Album> si Artista puede tener varios Albumes
+        List<Album> albumes = albumRepositorio.findByidArtista_Id(idArtista); // ¡CORREGIDO!
         if (albumes.isEmpty()) {
-            log.error("Album no encontrado para el artista con ID: {}", idArtista);
-            throw new RuntimeException("No se encontraron albumes para el artista con ID: " + idArtista);
+            log.warn("No se encontraron albumes para el artista con ID: {}", idArtista);
+            throw new NoDataFoundException("No se encontraron albumes para el artista con ID: " + idArtista);
         }
-        log.info("Albumes encontrados para el artista con ID {}: {}", idArtista, albumes.size());
         return albumes;
     }
 
@@ -55,17 +55,19 @@ public class AlbumServicio implements IAlbum {
         }
     }
 
-     public Optional<Album> findAlbumPorArtista(Integer idArtista) {
-        log.info("Buscando un álbum (opcional) para el artista con ID: {}", idArtista);
-        // Esto buscará una lista y tomará el primero si existe. Es una solución temporal
-        // si realmente necesitas un Optional. Lo ideal es redefinir el propósito de este método.
-        List<Album> albums = albumRepositorio.findByidArtista(idArtista);
-        if (albums.isEmpty()) {
-            log.warn("No se encontró ningún álbum para el artista con ID: {}", idArtista);
+     @Override
+    public Optional<Album> findAlbumPorArtista(Integer idArtista) {
+        log.debug("Iniciando búsqueda de album por artista con id: {}", idArtista);
+        // Si este método es para un *solo* album por artista, el repositorio debería
+        // tener un método como Optional<Album> findTopByidArtista_Id(Integer idArtista);
+        // O, si es posible que un artista tenga muchos y solo quieres el primero arbitrariamente:
+        List<Album> albumes = albumRepositorio.findByidArtista_Id(idArtista); // ¡Corregido!
+        if (albumes.isEmpty()) {
+            log.debug("No se encontró el album para el artista con id: {}", idArtista);
             return Optional.empty();
         } else {
-            log.info("Se encontró al menos un álbum para el artista con ID {}. Devolviendo el primero.", idArtista);
-            return Optional.of(albums.getFirst()); // Devuelve el primero de la lista
+            log.debug("Album encontrado: {}", albumes.getFirst());
+            return Optional.of(albumes.getFirst()); // Devuelve el primer elemento de la lista
         }
     }
 
