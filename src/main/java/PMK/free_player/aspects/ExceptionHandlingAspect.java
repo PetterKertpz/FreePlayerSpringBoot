@@ -17,13 +17,13 @@ public class ExceptionHandlingAspect {
 
     /**
      * Este 'advice' se ejecutará después de que un método en los servicios
-     * de PMK.free_player.services lance una excepción.
+     * de PMK.free_player.service lance una excepción.
      *
      * @param joinPoint Representa el metodo que lanzó la excepción.
      * @param ex La excepción lanzada.
      */
     @AfterThrowing(
-        pointcut = "within(PMK.free_player.services.*)", // Aplica a todos los métodos dentro del paquete services
+        pointcut = "within(PMK.free_player.service.*)", // Aplica a todos los métodos dentro del paquete service
         throwing = "ex" // Captura la excepción y la pasa al parámetro 'ex'
     )
     public void logAndHandleServiceException(JoinPoint joinPoint, Exception ex) {
