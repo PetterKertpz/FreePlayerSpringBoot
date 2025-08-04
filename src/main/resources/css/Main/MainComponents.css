@@ -1,0 +1,25 @@
+#Menu {
+    -fx-background-color: none;
+
+}
+#Menu .label {
+    -fx-font-family: SystemFont;
+    -fx-font-style: italic;
+    -fx-text-fill: white;
+    -fx-font-size: 25px;
+    -fx-alignment: left;
+    -fx-padding: 10px;
+}
+
+#Tabla-canciones{
+    -fx-background-color: linear-gradient(to left, #5d0ca8, #050505);
+
+}   #Tabla-canciones.table-view .column-header {
+        -fx-background-color: black;
+
+    }   #Tabla-canciones.table-view .column-header .label {
+        -fx-font-size: 20;
+        -fx-text-fill: red;
+        }   #Tabla-canciones.table-view .label {
+            -fx-text-fill: white;
+            }

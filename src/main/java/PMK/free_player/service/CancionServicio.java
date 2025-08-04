@@ -1,6 +1,6 @@
 package PMK.free_player.service;
 
-import PMK.free_player.exceptions.NoDataFoundException;
+import PMK.free_player.exception.NoDataFoundException;
 import PMK.free_player.models.Cancion;
 import PMK.free_player.repository.CancionRepositorio;
 import PMK.free_player.service.interfaces.ICancion;
@@ -33,7 +33,7 @@ public class CancionServicio implements ICancion {
     @Override
     public List<Cancion> listarCancionesPorAlbum(Integer idAlbum) {
         log.info("Buscando canciones por ID de album: {}", idAlbum);
-        List<Cancion> canciones = cancionRepositorio.findByIdAlbum_Id(idAlbum); // ¡Corregido!
+        List<Cancion> canciones = cancionRepositorio.findByAlbumId(idAlbum); // ¡Corregido!
         if (canciones.isEmpty()) {
             log.warn("No se encontraron canciones para el álbum con ID: {}", idAlbum);
             throw new NoDataFoundException("No se encontraron canciones para el álbum con ID: " + idAlbum);
@@ -44,7 +44,7 @@ public class CancionServicio implements ICancion {
     @Override
     public List<Cancion> listarCancionesPorGenero(Integer idGenero) {
         log.info("Buscando canciones por ID de género: {}", idGenero);
-        List<Cancion> canciones = cancionRepositorio.findByIdGenero_Id(idGenero); // ¡Corregido!
+        List<Cancion> canciones = cancionRepositorio.findByGeneroId(idGenero); // ¡Corregido!
         if (canciones.isEmpty()) {
             log.warn("No se encontraron canciones para el género con ID: {}", idGenero);
             throw new NoDataFoundException("No se encontraron canciones para el género con ID: " + idGenero);

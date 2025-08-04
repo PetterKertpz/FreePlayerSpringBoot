@@ -1,6 +1,5 @@
-package PMK.free_player.aspects;
+package PMK.free_player.exception;
 
-import PMK.free_player.exceptions.UsuarioNoEncontradoException;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;

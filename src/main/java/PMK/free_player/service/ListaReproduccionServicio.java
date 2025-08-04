@@ -1,8 +1,7 @@
 package PMK.free_player.service;
 
-import PMK.free_player.exceptions.NoDataFoundException;
-import PMK.free_player.exceptions.RecursoNoEncontradoException;
-import PMK.free_player.exceptions.UsuarioNoEncontradoException;
+import PMK.free_player.exception.NoDataFoundException;
+import PMK.free_player.exception.RecursoNoEncontradoException;
 import PMK.free_player.models.ListaReproduccion;
 import PMK.free_player.repository.ListaReproduccionRepositorio;
 import PMK.free_player.service.interfaces.IListaReproduccion;

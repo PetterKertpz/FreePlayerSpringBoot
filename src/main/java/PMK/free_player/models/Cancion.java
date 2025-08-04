@@ -30,12 +30,16 @@ public class Cancion {
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_artista")
+    private Artista artista;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_album")
-    private Album idAlbum;
+    private Album album;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_genero")
-    private Genero idGenero;
+    private Genero genero;
 
     @Size(max = 100)
     @NotNull

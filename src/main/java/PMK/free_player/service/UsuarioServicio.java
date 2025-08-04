@@ -1,7 +1,7 @@
 package PMK.free_player.service;
 
 
-import PMK.free_player.exceptions.*;
+import PMK.free_player.exception.*;
 import PMK.free_player.models.Usuario;
 import PMK.free_player.repository.UsuarioRepositorio;
 import PMK.free_player.service.interfaces.IUsuario;

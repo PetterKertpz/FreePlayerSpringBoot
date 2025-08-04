@@ -1,4 +1,4 @@
-package PMK.free_player.exceptions;
+package PMK.free_player.exception;
 // Extiende RuntimeException para que sea una excepción no chequeada (unchecked exception).
 // Esto evita la necesidad de declarar 'throws UsuarioNoEncontradoException' en cada método que pueda lanzarla.
 public class UsuarioNoEncontradoException extends RuntimeException {

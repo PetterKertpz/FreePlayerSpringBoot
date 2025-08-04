@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface CancionRepositorio extends JpaRepository<Cancion, Integer> {
-    List<Cancion> findByIdAlbum_Id(Integer idAlbum); // Para buscar por el ID del álbum
-    List<Cancion> findByIdGenero_Id(Integer idGenero); // Para buscar por el ID del género
+    List<Cancion> findByAlbumId(Integer idAlbum); // Para buscar por el ID del álbum
+    List<Cancion> findByGeneroId(Integer idGenero); // Para buscar por el ID del género
 }

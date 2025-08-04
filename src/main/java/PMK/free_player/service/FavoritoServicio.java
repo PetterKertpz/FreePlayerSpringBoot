@@ -1,7 +1,7 @@
 package PMK.free_player.service;
 
-import PMK.free_player.exceptions.NoDataFoundException;
-import PMK.free_player.exceptions.UsuarioNoEncontradoException;
+import PMK.free_player.exception.NoDataFoundException;
+import PMK.free_player.exception.UsuarioNoEncontradoException;
 import PMK.free_player.models.Favorito;
 import PMK.free_player.repository.FavoritoRepositorio;
 import PMK.free_player.service.interfaces.IFavorito;

@@ -1,0 +1,27 @@
+.Grid-body {
+    -fx-background-color: #000000;
+}
+
+.Panel-superior {
+    -fx-background-color: linear-gradient(to left, #5d0ca8, #120d18, #100f0f, #050505);
+
+}   .Panel-titulo {
+        -fx-background-color: rgba(16, 15, 15, 0);
+        -fx-alignment: left;
+
+    }
+
+.Panel-inferior {
+    -fx-background-color: linear-gradient(to left,rgba(5, 5, 5, 1) 1%, rgba(25, 7, 43, 1) 25%, rgba(93, 12, 168, 1) 52%, rgba(5, 5, 5, 1) 100%);
+
+}   .Panel-controles {
+        -fx-background-color: linear-gradient(to right,rgba(0, 0, 0, 1) 0%, rgba(5, 5, 5, 1) 100%);
+    }
+
+.Panel-izquierdo {
+    -fx-background-color: linear-gradient(to right, #5d0ca8, #050505);
+}   #Panel-logo {
+    -fx-background-color: black
+
+    }
+

@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import PMK.free_player.exceptions.*;
+import PMK.free_player.exception.*;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,6 +1,6 @@
 package PMK.free_player.service.interfaces;
 
-import PMK.free_player.exceptions.NoDataFoundException;
+import PMK.free_player.exception.NoDataFoundException;
 import PMK.free_player.models.Cancion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

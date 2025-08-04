@@ -1,8 +1,8 @@
 package PMK.free_player.service;
 
-import PMK.free_player.exceptions.ErrorInternoException;
-import PMK.free_player.exceptions.NoDataFoundException;
-import PMK.free_player.exceptions.RecursoNoEncontradoException;
+import PMK.free_player.exception.ErrorInternoException;
+import PMK.free_player.exception.NoDataFoundException;
+import PMK.free_player.exception.RecursoNoEncontradoException;
 import PMK.free_player.models.ConfiguracionUsuario;
 import PMK.free_player.repository.ConfiguracionUsuarioRepositorio;
 import PMK.free_player.service.interfaces.IConfiguracionUsuario;

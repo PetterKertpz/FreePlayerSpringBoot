@@ -1,4 +1,4 @@
-package PMK.free_player.exceptions;
+package PMK.free_player.exception;
 
 
 public class OperacionNoPermitidaException extends RuntimeException {

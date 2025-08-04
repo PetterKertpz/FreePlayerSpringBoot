@@ -1,6 +1,6 @@
 package PMK.free_player.service;
 
-import PMK.free_player.exceptions.NoDataFoundException;
+import PMK.free_player.exception.NoDataFoundException;
 import PMK.free_player.models.DetalleListaReproduccion;
 import PMK.free_player.repository.DetalleListaReproduccionRepositorio;
 import PMK.free_player.service.interfaces.IDetalleListaReproduccion;
@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service

@@ -1,6 +1,6 @@
 package PMK.free_player.service;
 
-import PMK.free_player.exceptions.NoDataFoundException;
+import PMK.free_player.exception.NoDataFoundException;
 import PMK.free_player.models.ConfiguracionReproduccion;
 import PMK.free_player.repository.ConfiguracionReproduccionRepositorio;
 import PMK.free_player.service.interfaces.IConfiguracionReproduccion;

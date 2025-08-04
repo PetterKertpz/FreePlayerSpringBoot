@@ -18,6 +18,7 @@ public class SpringApplication {
                 .headless(false)
                 .web(org.springframework.boot.WebApplicationType.NONE)
                 .run(args);
+
         log.info("Contexto de aplicación iniciado");
         Application.launch(PMK.free_player.application.Reproductor.class, args);
     }

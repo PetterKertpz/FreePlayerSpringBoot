@@ -8,12 +8,17 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import PMK.free_player.SpringApplication; // Importa tu clase principal de Spring Boot
 
 public class Reproductor extends Application {
+
+    private static final Logger log = Logger.getLogger(Reproductor.class.getName());
 
     @Override
     public void init() throws Exception {
@@ -25,7 +30,7 @@ public class Reproductor extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/templates/index.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Main/Main.fxml"));
 
             if (SpringApplication.applicationContext == null) {
                 Logger.getLogger(Reproductor.class.getName()).log(Level.SEVERE, "El contexto de Spring no fue inicializado " +
@@ -42,8 +47,7 @@ public class Reproductor extends Application {
             primaryStage.show();
 
         } catch (IOException e) {
-            Logger.getLogger(Reproductor.class.getName()).log(Level.SEVERE, "Error al cargar la vista FXML: " + e.getMessage(),
-                    e);
+            Logger.getLogger(Reproductor.class.getName()).log(Level.SEVERE, "Error al cargar la vista FXML: " + e.getMessage(),e);
             // Considera mostrar un diálogo de error al usuario
         } catch (Exception e) {
             Logger.getLogger(Reproductor.class.getName()).log(Level.SEVERE,

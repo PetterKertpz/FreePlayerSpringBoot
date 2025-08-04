@@ -1,6 +1,6 @@
 package PMK.free_player.service;
 
-import PMK.free_player.exceptions.NoDataFoundException;
+import PMK.free_player.exception.NoDataFoundException;
 import PMK.free_player.models.Artista;
 import PMK.free_player.repository.ArtistaRepositorio;
 import PMK.free_player.service.interfaces.IArtista;
