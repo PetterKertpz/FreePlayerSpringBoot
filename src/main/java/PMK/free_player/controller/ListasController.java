@@ -11,8 +11,8 @@ import java.util.ResourceBundle;
 
 @RequiredArgsConstructor
 @Component
-public class MainListasController implements Initializable {
-    private static final Logger log = org.slf4j.LoggerFactory.getLogger(MainListasController.class);
+public class ListasController implements Initializable {
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(ListasController.class);
 
     @FXML void IrACanciones() {
         log.info("Navegando a Canciones");

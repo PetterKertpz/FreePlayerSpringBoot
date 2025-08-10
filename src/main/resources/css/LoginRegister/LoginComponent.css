@@ -1,0 +1,28 @@
+.text-field#Campo-user {
+    -fx-background-color: black;
+    -fx-background-radius: 30px;
+    -fx-border-color: white;
+    -fx-border-radius: 30px;
+
+}
+
+.password-field#Campo-contra{
+    -fx-background-color: black;
+    -fx-background-radius: 30px;
+    -fx-border-color: white;
+    -fx-border-radius: 30px;
+}
+
+.button#Boton-inicio-de-sesion {
+    -fx-background-color: rgba(255, 255, 255, 0.15);
+    -fx-border-color: white;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+}
+
+.button#Boton-register {
+    -fx-background-color: rgba(255, 255, 255, 0.15);
+    -fx-border-color: white;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+}

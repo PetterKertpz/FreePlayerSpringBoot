@@ -128,7 +128,7 @@
          <children>
             <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="1180.0" spacing="20.0" styleClass="Panel-titulo" GridPane.hgrow="ALWAYS" GridPane.vgrow="NEVER">
                <children>
-                  <Text boundsType="VISUAL" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="FREEPLAYER" textOrigin="CENTER" wrappingWidth="234.13665771484375" HBox.hgrow="ALWAYS">
+                  <Text boundsType="VISUAL" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="ALBUMES" textOrigin="CENTER" wrappingWidth="234.13665771484375" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="System Bold Italic" size="38.0" />
                      </font>
