@@ -8,7 +8,10 @@ import PMK.free_player.service.interfaces.IUsuario;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +21,13 @@ public class UsuarioServicio implements IUsuario {
 
     private static final Logger log = LoggerFactory.getLogger(UsuarioServicio.class);
     private final UsuarioRepositorio usuarioRepositorio;
+    private final PasswordEncoder codificadorContrasena;
+
+    public Usuario findUsuarioPorCorreo(String correo) {
+        log.info("Buscando usuario por correo: {}", correo);
+        return usuarioRepositorio.findByCorreo(correo).orElse(null);
+    }
+
 
     // Listar todos los usuarios
     @Override
@@ -48,6 +58,33 @@ public class UsuarioServicio implements IUsuario {
 
     }
 
+    public void crearUsuarioLocal(String nombre, String email, String contrasenaPlana) {
+    // 1. Verificamos si el email ya existe para evitar duplicados.
+    if (usuarioRepositorio.findByCorreo(email).isPresent()) {
+        throw new IllegalStateException("El correo electrónico '" + email + "' ya está registrado.");
+    }
+
+    // 2. Creamos una nueva instancia de nuestra entidad Usuario.
+    Usuario nuevoUsuario = new Usuario();
+    nuevoUsuario.setNombreUsuario(nombre);
+    nuevoUsuario.setCorreo(email);
+
+    // 3. Encriptamos la contraseña. Este es el paso de seguridad más importante.
+    nuevoUsuario.setContrasenaHash(codificadorContrasena.encode(contrasenaPlana));
+
+    // 4. Asignamos valores por defecto.
+    nuevoUsuario.setFechaRegistro(Instant.now());
+    nuevoUsuario.setVerificado(false);
+
+    // 5. **LLAMAMOS A TU MÉTODO EXISTENTE** para guardar el objeto Usuario.
+    // En lugar de llamar a 'usuarioRepositorio.save()', reutilizamos tu lógica.
+    this.saveUsuario(nuevoUsuario);
+
+    log.info("Nuevo usuario creado y guardado a través de saveUsuario: {}", email);
+}
+
+
+
     // Guardar o actualizar un usuario
     @Override
     public Usuario saveUsuario(Usuario usuario) {
@@ -76,5 +113,34 @@ public class UsuarioServicio implements IUsuario {
         }
         log.info("Usuario con ID {} eliminado correctamente", idUsuario);
     }
+
+    /**
+ * Autentica a un usuario local.
+ *
+ * @param email El email que el usuario introduce en el formulario.
+ * @param contrasenaPlana La contraseña en texto plano que el usuario introduce.
+ * @return `true` si el email existe y la contraseña coincide, `false` en caso contrario.
+ */
+public boolean autenticarUsuario(String email, String contrasenaPlana) {
+    // 1. Busca al usuario por su email en la base de datos.
+    // Usar Optional es una buena práctica para evitar errores de NullPointerException.
+    Optional<Usuario> usuarioOptional = usuarioRepositorio.findByCorreo(email);
+
+    // 2. Si el Optional está vacío, significa que no se encontró ningún usuario con ese email.
+    if (usuarioOptional.isEmpty()) {
+        log.warn("Intento de login para un email no registrado: {}", email);
+        return false; // Falla la autenticación.
+    }
+
+    // 3. Si se encontró, obtenemos el objeto Usuario.
+    Usuario usuarioEncontrado = usuarioOptional.get();
+
+    // 4. Comparamos la contraseña del formulario con la guardada en la base de datos.
+    // NUNCA compares contraseñas en texto plano. El método `matches()` se encarga de
+    // comparar de forma segura la contraseña introducida con la versión encriptada (hash)
+    // que tienes en la base de datos.
+    return codificadorContrasena.matches(contrasenaPlana, usuarioEncontrado.getContrasenaHash());
+}
+
 }
 

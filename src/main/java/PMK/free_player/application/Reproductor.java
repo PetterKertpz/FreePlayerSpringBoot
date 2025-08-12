@@ -1,12 +1,7 @@
 package PMK.free_player.application;
 
 import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,42 +19,36 @@ public class Reproductor extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Main/Main.fxml"));
-
-            if (SpringApplication.applicationContext == null) {
-                Logger.getLogger(Reproductor.class.getName()).log(Level.SEVERE, "El contexto de Spring no fue inicializado " +
-                        "correctamente.");
-                Platform.exit();
-                return;
-            }
-            fxmlLoader.setControllerFactory(SpringApplication.applicationContext::getBean);
-
-            Parent root = fxmlLoader.load();
-            Scene escena = new Scene(root);
-            primaryStage.setScene(escena);
-            primaryStage.setTitle("FreePlayer - Tu Reproductor de Música");
-            primaryStage.show();
-
-        } catch (IOException e) {
-            Logger.getLogger(Reproductor.class.getName()).log(Level.SEVERE, "Error al cargar la vista FXML: " + e.getMessage(),e);
-            // Considera mostrar un diálogo de error al usuario
-        } catch (Exception e) {
-            Logger.getLogger(Reproductor.class.getName()).log(Level.SEVERE,
-                    "Error inesperado al iniciar la aplicación: " + e.getMessage(), e);
-            // Considera mostrar un diálogo de error al usuario
+    public void start(Stage escenarioPrincipal) {
+        // 1. Verificamos que el contexto de Spring esté disponible.
+        if (SpringApplication.applicationContext == null) {
+            log.log(Level.SEVERE, "Error Crítico: El contexto de Spring no fue inicializado.");
+            // Aquí no se usa Platform.exit() porque puede no funcionar si JavaFX no está completamente levantado.
+            // Simplemente no continuamos.
+            return;
         }
+
+        // 2. Obtenemos nuestra instancia del GestorDeEscenas desde el contexto de Spring.
+        // Spring ya ha creado este objeto por nosotros porque tiene la anotación @Service.
+        GestorDeEscenas gestorDeEscenas = SpringApplication.applicationContext.getBean(GestorDeEscenas.class);
+
+        // 3. Le pasamos el 'Stage' (el lienzo principal de la ventana) a nuestro gestor.
+        // El gestor lo guardará para poder cambiar escenas en él más adelante.
+        gestorDeEscenas.inicializar(escenarioPrincipal);
+
+        // 4. Le pedimos al gestor que cargue la primera escena: la de Login.
+        // Ya no cargamos "Main.fxml" directamente aquí.
+        log.info("Iniciando la aplicación. Mostrando la escena de Login.");
+        gestorDeEscenas.cambiarEscena("Login/Login.fxml", "FreePlayer - Inicio de Sesión");
     }
 
     @Override
     public void stop() throws Exception {
         // Cierra el contexto de Spring cuando la aplicación JavaFX se detiene.
+        // Tu lógica aquí es correcta y la mantenemos.
         if (SpringApplication.applicationContext != null) {
             SpringApplication.applicationContext.close();
-            Logger.getLogger(Reproductor.class.getName()).log(Level.INFO, "Contexto de Spring cerrado.");
+            log.log(Level.INFO, "Contexto de Spring cerrado.");
         }
-        super.stop();
-        Platform.exit(); // Asegura que todos los hilos de JavaFX se cierren
     }
 }

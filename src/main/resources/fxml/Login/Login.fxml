@@ -4,13 +4,10 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -37,30 +34,19 @@
                      </font>
                   </Label>
                   <Separator maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="56.0" prefWidth="1000.0" visible="false" VBox.vgrow="ALWAYS" />
-                  <HBox id="Panel-user-contra" alignment="CENTER" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="78.0" prefWidth="960.0" spacing="50.0" VBox.vgrow="ALWAYS">
-                     <children>
-                        <TextField id="Campo-user" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" promptText="Usuario o Correo electronico" HBox.hgrow="ALWAYS">
-                           <font>
-                              <Font name="Nirmala Text" size="25.0" />
-                           </font>
-                        </TextField>
-                        <PasswordField id="Campo-contra" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" promptText="Contraseña" HBox.hgrow="ALWAYS">
-                           <font>
-                              <Font name="Nirmala Text" size="25.0" />
-                           </font>
-                        </PasswordField>
-                     </children>
-                     <VBox.margin>
-                        <Insets left="20.0" right="20.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <Button id="Boton-inicio-de-sesion" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Iniciar Sesion" textFill="#923ec9" VBox.vgrow="ALWAYS">
+                  <Button id="Boton-inicio-de-sesion" fx:id="IdBotonLoginGoogle" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#manejarInicioSesionGoogle" text="Iniciar Sesion con GOOGLE" textFill="#923ec9" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font name="System Bold Italic" size="20.0" />
+                     </font>
+                  </Button>
+                  <Separator orientation="VERTICAL" prefHeight="40.0" prefWidth="136.0" visible="false" />
+                  <Button id="Boton-inicio-de-sesion" fx:id="IdBotonLoginLocal" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#manejarInicioSesionLocal" text="Iniciar Sesion Local" textFill="#923ec9">
                      <font>
                         <Font name="System Bold Italic" size="20.0" />
                      </font>
                   </Button>
                   <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="506.0" prefWidth="99.0" visible="false" VBox.vgrow="ALWAYS" />
-                  <Button id="Boton-register" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Registrar" textAlignment="CENTER" textFill="#18e845">
+                  <Button id="Boton-register" fx:id="IdBotonRegisterLocal" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#registrarLocalmente" text="Registrar Localmente" textAlignment="CENTER" textFill="#18e845">
                      <VBox.margin>
                         <Insets bottom="30.0" />
                      </VBox.margin>
