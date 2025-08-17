@@ -6,7 +6,9 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -17,13 +19,14 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="1080.0" maxWidth="1920.0" minHeight="720.0" minWidth="1280.0" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PMK.free_player.controller.MainController">
+<AnchorPane fx:id="IdLoginScene" maxHeight="1080.0" maxWidth="1920.0" minHeight="720.0" minWidth="1280.0" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PMK.free_player.controller.MainController">
     <stylesheets>
       <URL value="@../../css/Main/MainContainers.css" />
       <URL value="@../../css/Main/MainControls.css" />
@@ -80,22 +83,22 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="GeneroLabel1" prefHeight="40.0" prefWidth="405.0" text="duracion" textFill="WHITE">
+                  <Label prefHeight="40.0" prefWidth="405.0" text="duracion" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="GeneroLabel2" prefHeight="40.0" prefWidth="405.0" text="descripción" textFill="WHITE">
+                  <Label prefHeight="40.0" prefWidth="405.0" text="descripción" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="GeneroLabel3" prefHeight="40.0" prefWidth="405.0" text="ultima reproduccion" textFill="WHITE">
+                  <Label prefHeight="40.0" prefWidth="405.0" text="ultima reproduccion" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="GeneroLabel4" prefHeight="40.0" prefWidth="405.0" text="letra" textFill="WHITE">
+                  <Label prefHeight="40.0" prefWidth="405.0" text="letra" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -116,17 +119,16 @@
                </padding></ProgressBar>
          </children>
       </HBox>
-      <GridPane id="Panel-superior" alignment="CENTER" GridPane.columnIndex="1">
+      <GridPane id="Panel-superior" alignment="CENTER" prefHeight="194.0" prefWidth="1200.0" GridPane.columnIndex="1">
         <columnConstraints>
           <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" vgrow="ALWAYS" />
-          <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" vgrow="ALWAYS" />
-            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="35.0" vgrow="ALWAYS" />
         </rowConstraints>
          <children>
-            <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="1180.0" spacing="20.0" styleClass="Panel-titulo" GridPane.hgrow="ALWAYS" GridPane.vgrow="NEVER">
+            <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="13.0" prefWidth="1180.0" spacing="20.0" styleClass="Panel-titulo" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
                <children>
                   <Text boundsType="VISUAL" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="FREEPLAYER" textOrigin="CENTER" wrappingWidth="234.13665771484375" HBox.hgrow="ALWAYS">
                      <font>
@@ -144,25 +146,33 @@
                         <Insets />
                      </HBox.margin>
                   </TextField>
-                  <ImageView fitHeight="43.0" fitWidth="48.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
-                     <image>
-                        <Image url="@../../../../../../../../../../Pictures/duckboy-profile-pic-1.jpg" />
-                     </image></ImageView>
+                  <Pane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.0" prefWidth="88.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <ImageView fitHeight="43.0" fitWidth="48.0" layoutX="24.0" layoutY="1.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../../../../Pictures/duckboy-profile-pic-1.jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
                </children>
                <GridPane.margin>
-                  <Insets left="10.0" right="10.0" top="10.0" />
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
-               <padding>
-                  <Insets left="10.0" right="10.0" top="10.0" />
-               </padding>
             </HBox>
-            <MenuBar id="Menu" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
+            <MenuBar id="Menu" fx:id="idMenu" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
               <menus>
-                <Menu mnemonicParsing="false" text="Canciones" />
-                <Menu mnemonicParsing="false" text="Listas" />
-                <Menu mnemonicParsing="false" text="Albumes" />
-                  <Menu mnemonicParsing="false" text="Generos" />
-                  <Menu mnemonicParsing="false" text="Favoritos" />
+                <Menu mnemonicParsing="false" text="Canciones">
+                     <items>
+                        <MenuItem fx:id="idBotonMain" mnemonicParsing="false" onAction="#manejarIrMain" visible="false" />
+                     </items></Menu>
+                <Menu mnemonicParsing="false" text="Listas">
+                     <items>
+                        <MenuItem fx:id="idBotonListas" mnemonicParsing="false" onAction="#manejarIrListas" visible="false" />
+                     </items></Menu>
+                <Menu fx:id="idBotonAlbumes" mnemonicParsing="false" onAction="#manejarIrAlbumes" text="Albumes" />
+                  <Menu mnemonicParsing="false" onAction="#manejarIrGeneros" text="Generos" />
+                  <Menu mnemonicParsing="false" onAction="#manejarIrFavoritos" text="Favoritos" />
               </menus>
                <GridPane.margin>
                   <Insets />
@@ -181,12 +191,17 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <HBox id="Panel-controles" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="25.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+      <HBox id="Panel-controles" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="25.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
          <children>
-            <SVGPath content="M11 5.466V4H5a4 4 0 0 0-3.584 5.777.5.5 0 1 1-.896.446A5 5 0 0 1 5 3h6V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192m3.81.086a.5.5 0 0 1 .67.225A5 5 0 0 1 11 13H5v1.466a.25.25 0 0 1-.41.192l-2.36-1.966a.25.25 0 0 1 0-.384l2.36-1.966a.25.25 0 0 1 .41.192V12h6a4 4 0 0 0 3.585-5.777.5.5 0 0 1 .225-.67Z" fill="WHITE" scaleX="2.0" scaleY="2.0" />
+            <SVGPath content="M11 5.466V4H5a4 4 0 0 0-3.584 5.777.5.5 0 1 1-.896.446A5 5 0 0 1 5 3h6V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192m3.81.086a.5.5 0 0 1 .67.225A5 5 0 0 1 11 13H5v1.466a.25.25 0 0 1-.41.192l-2.36-1.966a.25.25 0 0 1 0-.384l2.36-1.966a.25.25 0 0 1 .41.192V12h6a4 4 0 0 0 3.585-5.777.5.5 0 0 1 .225-.67Z" fill="WHITE" scaleX="2.0" scaleY="2.0">
+               <HBox.margin>
+                  <Insets left="25.0" />
+               </HBox.margin></SVGPath>
+            <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" visible="false" HBox.hgrow="ALWAYS" />
             <SVGPath content="M.404 7.304a.802.802 0 0 0 0 1.392l6.363 3.692c.52.302 1.233-.043 1.233-.696V4.308c0-.653-.713-.998-1.233-.696zM8.404 7.304a.802.802 0 0 0 0 1.392l6.363 3.692c.52.302 1.233-.043 1.233-.696V4.308c0-.653-.713-.998-1.233-.696z" fill="WHITE" scaleX="2.0" scaleY="2.0" scaleZ="2.0" />
             <SVGPath content="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393" fill="WHITE" scaleX="2.5" scaleY="2.5" scaleZ="2.5" />
             <SVGPath content="M7.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696zM15.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C8.713 12.69 8 12.345 8 11.692V4.308c0-.653.713-.998 1.233-.696z" fill="WHITE" scaleX="2.0" scaleY="2.0" scaleZ="2.0" />
+            <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" visible="false" HBox.hgrow="ALWAYS" />
             <Slider blockIncrement="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" minorTickCount="0" prefHeight="42.0" prefWidth="73.0" HBox.hgrow="ALWAYS" />
          </children></HBox>
     </GridPane>

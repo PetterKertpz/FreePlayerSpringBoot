@@ -85,4 +85,7 @@ public class ListaReproduccionServicio implements IListaReproduccion {
         log.info("Lista de reproduccion eliminada con ID: {}", idLista);
 
     }
+
+    //Metodo para el DTO
+
 }

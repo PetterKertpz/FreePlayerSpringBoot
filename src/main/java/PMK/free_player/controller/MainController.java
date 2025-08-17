@@ -1,5 +1,6 @@
 package PMK.free_player.controller;
 
+import PMK.free_player.application.GestorDeEscenas;
 import PMK.free_player.dto.CancionDto;
 import PMK.free_player.service.CancionServicio;
 import javafx.collections.FXCollections;
@@ -10,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,6 +35,8 @@ public class MainController implements Initializable {
     //Lista observable para almacenar las canciones filtradas
     private FilteredList<CancionDto> cancionesFiltradas;
 
+    private final GestorDeEscenas gestorDeEscenas;
+
 
     //________________________Componentes de la UI definidos en tu FXML________________________________
     @FXML private TableView<CancionDto> ReproduccionTabla;
@@ -54,6 +58,17 @@ public class MainController implements Initializable {
     @FXML private Label GeneroLabel;
 
     @FXML private TextField CampoBusqueda;
+
+    @FXML
+    private MenuBar   idMenu;
+    @FXML
+    private Menu       idBotonAlbumes;
+    @FXML
+    private AnchorPane IdLoginScene;
+    @FXML
+    private MenuItem   idBotonListas;
+    @FXML
+    private MenuItem idBotonMain;
 
 
     //_____________Metodos de inicializacion______________________
@@ -148,5 +163,27 @@ public class MainController implements Initializable {
             }
             return false; // Si no hay coincidencia en ningún campo
         };
+    }
+
+    @FXML
+    public void manejarIrFavoritos(ActionEvent actionEvent) {
+
+    }
+
+    @FXML
+    public void manejarIrMain(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void manejarIrAlbumes(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void manejarIrGeneros(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void manejarIrListas(ActionEvent actionEvent) {
+        gestorDeEscenas.cambiarEscena("Listas/Listas.fxml ", "FreePlayer-Listas de Reproducción");
     }
 }

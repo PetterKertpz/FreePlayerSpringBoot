@@ -186,7 +186,6 @@
             <artifactId>google-oauth-client-jetty</artifactId>
             <version>1.36.0</version>
         </dependency>
-
     </dependencies>
 
     <build>

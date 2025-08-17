@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -125,8 +126,14 @@
             </HBox>
             <MenuBar id="Menu" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="45.0" prefWidth="1200.0" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
               <menus>
-                <Menu id="Menu-boton" mnemonicParsing="false" text="Canciones" />
-                <Menu id="Menu-boton" mnemonicParsing="false" text="Listas" />
+                <Menu id="Menu-boton" mnemonicParsing="false" text="Canciones">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#manejarIrMain" visible="false" />
+                     </items></Menu>
+                <Menu id="Menu-boton" mnemonicParsing="false" text="Listas">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#manejarIrListas" />
+                     </items></Menu>
                 <Menu id="Menu-boton" mnemonicParsing="false" text="Albumes" />
                   <Menu id="Menu-boton" mnemonicParsing="false" text="Generos" />
                   <Menu id="Menu-boton" mnemonicParsing="false" text="Favoritos" />

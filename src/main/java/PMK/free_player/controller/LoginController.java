@@ -37,10 +37,10 @@ public class LoginController implements Initializable {
     private static final Logger log = LoggerFactory.getLogger(LoginController.class);
 
     // --- Componentes FXML (sin cambios) ---
-    @FXML private AnchorPane IdLoginScene;
     @FXML private Button IdBotonLoginGoogle;
     @FXML private Button IdBotonLoginLocal;
-    @FXML private Button IdBotonRegisterLocal;
+    @FXML private Button     IdBotonRegisterLocal;
+    @FXML private AnchorPane IdLoginScene;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -84,12 +84,10 @@ public class LoginController implements Initializable {
 
             } catch (TokenResponseException e) {
                 // **MEJORA 2**: Captura específica para errores de token de Google.
-                log.error("Error de token de Google. Probablemente el usuario no está en la lista de prueba.", e);
-                Platform.runLater(() -> {
-                    mostrarAlerta("Acceso Denegado",
-                            "La cuenta de Google seleccionada no tiene permiso para usar esta aplicación en modo de prueba. " +
-                            "Por favor, contacta al administrador o intenta con otra cuenta.", Alert.AlertType.ERROR);
-                });
+                log.error("Error de token de Google. Probablemente, el usuario no está en la lista de prueba.", e);
+                Platform.runLater(() -> mostrarAlerta("Acceso Denegado",
+                        "La cuenta de Google seleccionada no tiene permiso para usar esta aplicación en modo de prueba. " +
+                        "Por favor, contacta al administrador o intenta con otra cuenta.", Alert.AlertType.ERROR));
 
                 // **MEJORA 3**: Borramos las credenciales malas automáticamente.
                 borrarCredencialesGoogle();
@@ -112,7 +110,7 @@ public class LoginController implements Initializable {
     }
 
     @FXML
-    public void registrarLocalmente(ActionEvent actionEvent) {
+    public void registrarLocalmente(ActionEvent event) {
         log.info("Navegando a la vista de Registro Local.");
         gestorDeEscenas.cambiarEscena("Login/RegistroLocal.fxml", "FreePlayer - Crear Cuenta");
     }
@@ -135,7 +133,7 @@ public class LoginController implements Initializable {
         if (IdBotonLoginGoogle != null) IdBotonLoginGoogle.setDisable(bloqueado);
         if (IdBotonLoginLocal != null) IdBotonLoginLocal.setDisable(bloqueado);
         if (IdBotonRegisterLocal != null) IdBotonRegisterLocal.setDisable(bloqueado);
-        log.info("Navegación de login " + (bloqueado ? "bloqueada." : "desbloqueada."));
+        log.info("Navegación de login {}", bloqueado ? "bloqueada." : "desbloqueada.");
     }
 
     /**
