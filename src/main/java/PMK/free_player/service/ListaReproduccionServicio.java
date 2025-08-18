@@ -1,17 +1,21 @@
 package PMK.free_player.service;
 
+import PMK.free_player.dto.ListaReproduccionDto;
 import PMK.free_player.exception.NoDataFoundException;
 import PMK.free_player.exception.RecursoNoEncontradoException;
 import PMK.free_player.models.ListaReproduccion;
+import PMK.free_player.repository.DetalleListaReproduccionRepositorio;
 import PMK.free_player.repository.ListaReproduccionRepositorio;
 import PMK.free_player.service.interfaces.IListaReproduccion;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -19,6 +23,7 @@ public class ListaReproduccionServicio implements IListaReproduccion {
 
     private static final Logger log = LoggerFactory.getLogger(ListaReproduccionServicio.class);
     private final ListaReproduccionRepositorio listaReproduccionRepositorio;
+    private final DetalleListaReproduccionRepositorio detalleListaReproduccionRepositorio;
 
     @Override
     public List<ListaReproduccion> ListarListasReproduccion() {
@@ -87,5 +92,31 @@ public class ListaReproduccionServicio implements IListaReproduccion {
     }
 
     //Metodo para el DTO
+    @Transactional(readOnly = true)
+    public List<ListaReproduccionDto> obtenerListasComoDto() {
+        log.info("Obteniendo todas las listas de reproducción como DTOs de resumen.");
+        List<ListaReproduccion> listas = listaReproduccionRepositorio.findAll();
 
+        // Usamos la misma técnica de stream y map que en CancionServicio
+        return listas.stream()
+                      .map(this::mapearEntidadADto)
+                      .collect(Collectors.toList());
+    }
+
+    /**
+     * Convierte una entidad ListaReproduccion a su DTO de resumen.
+     */
+    private ListaReproduccionDto mapearEntidadADto(ListaReproduccion lista) {
+        ListaReproduccionDto dto = new ListaReproduccionDto();
+        dto.setIdLista(lista.getId());
+        dto.setNombre(lista.getNombre());
+        dto.setCategoria(lista.getCategoria());
+        dto.setFechaCreacion(lista.getFechaCreacion());
+
+        // Usamos el metodo que acabamos de añadir al repositorio para calcular las canciones
+        long cantidadCanciones = detalleListaReproduccionRepositorio.countById_IdLista(lista.getId());
+        dto.setNumeroCanciones((int) cantidadCanciones);
+
+        return dto;
+    }
 }

@@ -9,7 +9,12 @@ import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lombok.RequiredArgsConstructor;
@@ -59,16 +64,7 @@ public class MainController implements Initializable {
 
     @FXML private TextField CampoBusqueda;
 
-    @FXML
-    private MenuBar   idMenu;
-    @FXML
-    private Menu       idBotonAlbumes;
-    @FXML
-    private AnchorPane IdLoginScene;
-    @FXML
-    private MenuItem   idBotonListas;
-    @FXML
-    private MenuItem idBotonMain;
+    @FXML private AnchorPane IdLoginScene;
 
 
     //_____________Metodos de inicializacion______________________
@@ -167,23 +163,31 @@ public class MainController implements Initializable {
 
     @FXML
     public void manejarIrFavoritos(ActionEvent actionEvent) {
-
+        gestorDeEscenas.cambiarEscena("Favoritos/Favoritos.fxml", "FreePlayer - Favoritos");
     }
 
     @FXML
-    public void manejarIrMain(ActionEvent actionEvent) {
+    public void manejarIrBiblioteca(ActionEvent actionEvent) {
+        gestorDeEscenas.cambiarEscena("Main/Main.fxml", "FreePlayer - Biblioteca");
     }
 
     @FXML
     public void manejarIrAlbumes(ActionEvent actionEvent) {
+        gestorDeEscenas.cambiarEscena("Albumes/Albumes.fxml ", "FreePlayer-Albumes");
     }
 
     @FXML
     public void manejarIrGeneros(ActionEvent actionEvent) {
+        gestorDeEscenas.cambiarEscena("Generos/Generos.fxml ", "FreePlayer-Generos");
     }
 
     @FXML
     public void manejarIrListas(ActionEvent actionEvent) {
-        gestorDeEscenas.cambiarEscena("Listas/Listas.fxml ", "FreePlayer-Listas de Reproducción");
+        gestorDeEscenas.cambiarEscena("Listas/Listas.fxml ", "FreePlayer-Listas");
+    }
+
+    @FXML
+    public void manejarIrArtista(ActionEvent actionEvent) {
+        gestorDeEscenas.cambiarEscena("Artistas/Artistas.fxml ", "FreePlayer-Artistas");
     }
 }

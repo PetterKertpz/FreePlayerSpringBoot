@@ -18,6 +18,7 @@ public interface DetalleListaReproduccionRepositorio extends JpaRepository<Detal
     // Para buscar todos los detalles por un ID de canción
     List<DetalleListaReproduccion> findById_IdCancion(Integer idCancion);
 
+    long countById_IdLista(Integer idLista);
     // deleteById(DetalleListaReproduccionPk id); <-- Ya está en la interfaz, lo cual es correcto.
     // Pero el servicio lo está llamando con un Integer.
 }

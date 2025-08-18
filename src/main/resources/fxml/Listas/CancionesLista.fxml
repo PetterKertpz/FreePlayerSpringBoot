@@ -24,7 +24,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="IdLoginScene" maxHeight="1080.0" maxWidth="1920.0" minHeight="720.0" minWidth="1280.0" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PMK.free_player.controller.MainController">
+<AnchorPane fx:id="IdLoginScene" maxHeight="1080.0" maxWidth="1920.0" minHeight="720.0" minWidth="1280.0"
+            prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/24.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="PMK.free_player.controller.CancionesListaController">
     <stylesheets>
       <URL value="@../../css/Main/MainContainers.css" />
       <URL value="@../../css/Main/MainControls.css" />
@@ -61,42 +63,42 @@
                </VBox.margin></AnchorPane>
             <VBox id="Panel-info" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="458.0" prefWidth="400.0">
                <children>
-                  <Label fx:id="TituloLabel" prefHeight="40.0" prefWidth="405.0" text="Nombre Canción" textFill="WHITE">
+                  <Label fx:id="NombreLista" prefHeight="40.0" prefWidth="405.0" text="Nombre Lista" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="30.0" />
                      </font>
                   </Label>
-                  <Label fx:id="ArtistaLabel" prefHeight="40.0" prefWidth="405.0" text="Nombre Artista" textFill="WHITE">
+                  <Label fx:id="NombreCancion" prefHeight="40.0" prefWidth="405.0" text="Nombre Canción" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="28.0" />
                      </font>
                   </Label>
-                  <Label fx:id="AlbumLabel" prefHeight="40.0" prefWidth="405.0" text="Nombre Album" textFill="WHITE">
+                  <Label fx:id="NombreArtista" prefHeight="40.0" prefWidth="405.0" text="Nombre Artista" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="GeneroLabel" prefHeight="40.0" prefWidth="405.0" text="Nombre Genero" textFill="WHITE">
+                  <Label fx:id="NombreAlbum" prefHeight="40.0" prefWidth="405.0" text="Nombre Album" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="40.0" prefWidth="405.0" text="duracion" textFill="WHITE">
+                  <Label fx:id="Genero" prefHeight="40.0" prefWidth="405.0" text="Genero" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="40.0" prefWidth="405.0" text="descripción" textFill="WHITE">
+                  <Label fx:id="Descripcion" prefHeight="40.0" prefWidth="405.0" text="descripción" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="40.0" prefWidth="405.0" text="ultima reproduccion" textFill="WHITE">
+                  <Label fx:id="UltimaModificacion" prefHeight="40.0" prefWidth="405.0" text="ultima reproduccion" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="40.0" prefWidth="405.0" text="letra" textFill="WHITE">
+                  <Label fx:id="Letra" prefHeight="40.0" prefWidth="405.0" text="letra" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
